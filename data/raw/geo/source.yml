@@ -1,0 +1,25 @@
+sources:
+  geofla_postalcode:
+    filenames:
+      - code-postal-code-insee-2015/code-postal-code-insee-2015.shx
+      - code-postal-code-insee-2015/code-postal-code-insee-2015.shp
+      - code-postal-code-insee-2015/code-postal-code-insee-2015.dbf
+      - code-postal-code-insee-2015/code-postal-code-insee-2015.prj
+    description: join of Geofla data (geographic data of communes) and postal codes data
+    description_url: https://data.opendatasoft.com/explore/dataset/code-postal-code-insee-2015%40public/information/
+    update_frequency: irregular
+    source_urls:
+      - https://data.opendatasoft.com/explore/dataset/code-postal-code-insee-2015@public/download/?format=shp&timezone=Europe/Berlin
+
+  epci:
+    filenames:
+      - epcicom2020.csv
+    description: EPCI (~commune association) definitions file
+    description_url: https://www.collectivites-locales.gouv.fr/liste-et-composition-2020
+    update_frequency: yearly
+    source_urls:
+      - https://www.collectivites-locales.gouv.fr/files/files/dgcl_v2/DESL/Bilansstats2020/epcicom2020.xlsx
+    preprocessing_steps:
+      - read xls using Excel or pandas
+      - save to csv
+

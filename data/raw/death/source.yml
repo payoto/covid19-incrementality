@@ -1,0 +1,44 @@
+sources:
+  insee_death_history:
+    filename: deces-1970-to-2020-03.csv.gz
+    description: INSEE death logs, per individual, non-anonymized, from 1970 to 2020-02
+    description_url: https://insee.fr/fr/information/4190491
+    update_frequency: monthly, around the 10th of each month
+    source_urls:
+      - https://insee.fr/fr/statistiques/fichier/4190491/deces-1970-1979-csv.zip
+      - https://insee.fr/fr/statistiques/fichier/4190491/deces-1980-1989-csv.zip
+      - https://insee.fr/fr/statistiques/fichier/4190491/deces-1990-1999-csv.zip
+      - https://insee.fr/fr/statistiques/fichier/4190491/deces-2000-2009-csv.zip
+      - https://insee.fr/fr/statistiques/fichier/4190491/deces-2010-2018-csv.zip
+      - https://insee.fr/fr/statistiques/fichier/4190491/Deces_2018.zip
+      - https://insee.fr/fr/statistiques/fichier/4190491/Deces_2019.zip
+      - https://insee.fr/fr/statistiques/fichier/4190491/Deces_2020_M01.zip
+      - https://insee.fr/fr/statistiques/fichier/4190491/Deces_2020_M02.zip
+      - https://insee.fr/fr/statistiques/fichier/4190491/Deces_2020_M03.zip
+    preprocessing_instructions:
+      - download all source files
+      - unzip all files
+      - copy first file to deces-1970-to-2020-XX.csv to bootstrap the file
+      - use 'tail -n+2 file.csv >> deces-1970-to-2020-XX.csv' to append each file without its header to the global file
+      - use 'gzip deces-1970-to-2020-XX.csv' to gzip the file
+      - remove the raw files
+
+  insee_death_recent:
+    filename: DC_jan2018-avr2020_det.csv
+    description: INSEE death logs, per individual, anonymized
+    description_url: https://www.insee.fr/fr/information/4470857
+    update_frequency: weekly, each Friday
+    source_urls:
+      - https://www.insee.fr/fr/statistiques/fichier/4470857/2020-05-07_detail.zip
+    preprocessing_instructions:
+      - download file
+      - unzip file
+      - remove other files
+
+  official_count_fr:
+    filename: chiffres-cles.csv
+    description: Official Covid-19 related deaths counts coming from French health authorities, as aggregated by Data against Covid-19
+    description_url: https://github.com/opencovid19-fr/data
+    update_frequency: daily
+    source_urls:
+      - https://raw.githubusercontent.com/opencovid19-fr/data/master/dist/chiffres-cles.csv
