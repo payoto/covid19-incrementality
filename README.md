@@ -1,5 +1,7 @@
 # An incrementality study of the impact of COVID-19 in France
 
+NOTE: OUTDATED README
+
 Aim: quantify death increase due to COVID-19 in France at the department level.
 
 ## References
